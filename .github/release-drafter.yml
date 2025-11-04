@@ -6,6 +6,8 @@ template: |
   $CHANGES
 
 categories:
+  - title: '⚠️ Breaking Changes'
+    labels: ['breaking', 'semver: major']
   - title: '✨ Features'
     labels: ['type: feature', 'enhancement']
   - title: '🐛 Fixes'
@@ -14,8 +16,8 @@ categories:
     labels: ['chore', 'build', 'ci', 'refactor', 'perf', 'style', 'test']
   - title: '📝 Docs'
     labels: ['docs']
-  - title: '⚠️ Breaking Changes'
-    labels: ['breaking', 'semver: major']
+  - title: '📦 Others'
+    labels: []
 
 change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
 exclude-labels: ['skip-changelog']
