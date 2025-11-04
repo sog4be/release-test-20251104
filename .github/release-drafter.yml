@@ -20,6 +20,7 @@ categories:
     labels: []
 
 change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
+category-template: '### $TITLE'
 exclude-labels: ['skip-changelog']
 
 version-resolver:
