@@ -1,0 +1,47 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template:  'v$RESOLVED_VERSION'
+
+categories:
+  - title: '✨ Features'
+    labels: ['type: feature', 'enhancement']
+  - title: '🐛 Fixes'
+    labels: ['type: bug', 'fix', 'bug']
+  - title: '🧰 Maintenance'
+    labels: ['chore', 'build', 'ci', 'refactor', 'perf', 'style', 'test']
+  - title: '📝 Docs'
+    labels: ['docs']
+  - title: '⚠️ Breaking Changes'
+    labels: ['breaking', 'semver: major']
+
+change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
+exclude-labels: ['skip-changelog']
+
+version-resolver:
+  major: { labels: ['semver: major', 'breaking'] }
+  minor: { labels: ['semver: minor', 'type: feature', 'enhancement'] }
+  patch: { labels: ['semver: patch', 'type: bug', 'fix', 'bug', 'docs', 'chore', 'refactor', 'perf', 'style', 'test', 'ci', 'build'] }
+  default: patch
+
+autolabeler:
+  # 種別
+  - label: 'type: feature'
+    title: ['/^feat(\(.+\))?!?:/i']
+  - label: 'type: bug'
+    title: ['/^fix(\(.+\))?:/i']
+  - label: 'docs'
+    title: ['/^docs(\(.+\))?:/i']
+  - label: 'chore'
+    title: ['/^(chore|build|ci|style|test)(\(.+\))?:/i']
+  - label: 'refactor'
+    title: ['/^refactor(\(.+\))?:/i']
+  - label: 'perf'
+    title: ['/^perf(\(.+\))?:/i']
+
+  # SemVer 増分
+  - label: 'semver: major'
+    title: ['/^.*!:/']           # 破壊的変更は "!" を検出
+    body:  ['/BREAKING CHANGE:/i']
+  - label: 'semver: minor'
+    title: ['/^feat(\(.+\))?!?:/i']
+  - label: 'semver: patch'
+    title: ['/^(fix|perf|refactor|chore|docs|style|test|build|ci)(\(.+\))?:/i']
